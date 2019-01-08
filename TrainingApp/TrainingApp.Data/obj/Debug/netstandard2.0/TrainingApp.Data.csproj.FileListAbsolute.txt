@@ -1,0 +1,9 @@
+C:\Projects\TrainingApp\TrainingApp.Data\bin\Debug\netstandard2.0\TrainingApp.Data.deps.json
+C:\Projects\TrainingApp\TrainingApp.Data\bin\Debug\netstandard2.0\TrainingApp.Data.dll
+C:\Projects\TrainingApp\TrainingApp.Data\bin\Debug\netstandard2.0\TrainingApp.Data.pdb
+C:\Projects\TrainingApp\TrainingApp.Data\obj\Debug\netstandard2.0\TrainingApp.Data.csproj.CoreCompileInputs.cache
+C:\Projects\TrainingApp\TrainingApp.Data\obj\Debug\netstandard2.0\TrainingApp.Data.AssemblyInfoInputs.cache
+C:\Projects\TrainingApp\TrainingApp.Data\obj\Debug\netstandard2.0\TrainingApp.Data.AssemblyInfo.cs
+C:\Projects\TrainingApp\TrainingApp.Data\obj\Debug\netstandard2.0\TrainingApp.Data.dll
+C:\Projects\TrainingApp\TrainingApp.Data\obj\Debug\netstandard2.0\TrainingApp.Data.pdb
+C:\Projects\TrainingApp\TrainingApp.Data\obj\Debug\netstandard2.0\TrainingApp.Data.csprojAssemblyReference.cache
