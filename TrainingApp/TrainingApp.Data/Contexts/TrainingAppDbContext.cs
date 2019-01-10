@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TrainingApp.Data.Entities;
 
-namespace TrainingApp.Host.Contexts
+namespace TrainingApp.Data.Contexts
 {
     public class TrainingAppDbContext : DbContext
     {

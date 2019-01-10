@@ -7,3 +7,12 @@ C:\Projects\TrainingApp\TrainingApp.Business\obj\Debug\netstandard2.0\TrainingAp
 C:\Projects\TrainingApp\TrainingApp.Business\obj\Debug\netstandard2.0\TrainingApp.Business.dll
 C:\Projects\TrainingApp\TrainingApp.Business\obj\Debug\netstandard2.0\TrainingApp.Business.pdb
 C:\Projects\TrainingApp\TrainingApp.Business\obj\Debug\netstandard2.0\TrainingApp.Business.csprojAssemblyReference.cache
+C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Business\bin\Debug\netstandard2.0\TrainingApp.Business.deps.json
+C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Business\bin\Debug\netstandard2.0\TrainingApp.Business.dll
+C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Business\bin\Debug\netstandard2.0\TrainingApp.Business.pdb
+C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Business\obj\Debug\netstandard2.0\TrainingApp.Business.csprojAssemblyReference.cache
+C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Business\obj\Debug\netstandard2.0\TrainingApp.Business.csproj.CoreCompileInputs.cache
+C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Business\obj\Debug\netstandard2.0\TrainingApp.Business.AssemblyInfoInputs.cache
+C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Business\obj\Debug\netstandard2.0\TrainingApp.Business.AssemblyInfo.cs
+C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Business\obj\Debug\netstandard2.0\TrainingApp.Business.dll
+C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Business\obj\Debug\netstandard2.0\TrainingApp.Business.pdb
