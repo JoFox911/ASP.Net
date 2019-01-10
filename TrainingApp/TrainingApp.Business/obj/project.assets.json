@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\TrainingApp\\TrainingApp.Business\\TrainingApp.Business.csproj",
+      "projectUniqueName": "C:\\Projects\\github\\ASP.Net\\TrainingApp\\TrainingApp.Business\\TrainingApp.Business.csproj",
       "projectName": "TrainingApp.Business",
-      "projectPath": "C:\\Projects\\TrainingApp\\TrainingApp.Business\\TrainingApp.Business.csproj",
+      "projectPath": "C:\\Projects\\github\\ASP.Net\\TrainingApp\\TrainingApp.Business\\TrainingApp.Business.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\TrainingApp\\TrainingApp.Business\\obj\\",
+      "outputPath": "C:\\Projects\\github\\ASP.Net\\TrainingApp\\TrainingApp.Business\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
