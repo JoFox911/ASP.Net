@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -33,11 +34,22 @@ namespace TrainingApp.Host
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //--------------------Context---------------------//
+
             // получаем строку подключения из файла конфигурации
             string connection = Configuration.GetConnectionString("DefaultConnection");
-            // добавляем контекст MobileContext в качестве сервиса в приложение
+            // добавляем контекст TrainingAppDbContext в качестве сервиса в приложение
             services.AddDbContext<TrainingAppDbContext>(options =>
                 options.UseSqlServer(connection));
+
+            //-----------------Authentication---------------------//
+            // установка конфигурации подключения
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new PathString("/Admin/Account/Login");
+                });
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

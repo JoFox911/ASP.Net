@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TrainingApp.Data.Entities;
+using TrainingApp.Data.Models;
 
 namespace TrainingApp.Data.Contexts
 {
