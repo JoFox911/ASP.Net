@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TrainingApp.Business.Services.Users;
 using TrainingApp.Data.Contexts;
 
 namespace TrainingApp.Host
@@ -33,6 +34,9 @@ namespace TrainingApp.Host
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            //--------------------Services---------------------//
+            services.AddScoped<IUsersService, UsersService>();
 
             //--------------------Context---------------------//
 
