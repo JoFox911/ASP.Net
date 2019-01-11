@@ -48,6 +48,7 @@ namespace TrainingApp.Host
                 .AddCookie(options => //CookieAuthenticationOptions
                 {
                     options.LoginPath = new PathString("/Admin/Account/Login");
+                    options.AccessDeniedPath = new PathString("/Admin/Account/Login");
                 });
 
 
@@ -70,6 +71,8 @@ namespace TrainingApp.Host
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
