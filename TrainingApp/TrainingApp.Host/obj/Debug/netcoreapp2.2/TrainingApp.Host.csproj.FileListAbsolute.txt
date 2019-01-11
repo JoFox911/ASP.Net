@@ -38,3 +38,5 @@ C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Host\obj\Debug\netcoreapp2.2\
 C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Host\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Shared\_Layout.g.cshtml.cs
 C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Host\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\_ViewStart.g.cshtml.cs
 C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Host\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Account\Register.g.cshtml.cs
+C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Host\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\Reports\Info.g.cshtml.cs
+C:\Projects\github\ASP.Net\TrainingApp\TrainingApp.Host\obj\Debug\netcoreapp2.2\Razor\Areas\Admin\Views\_ViewImports.g.cshtml.cs
