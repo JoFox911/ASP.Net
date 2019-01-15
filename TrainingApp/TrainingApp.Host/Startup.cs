@@ -11,7 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TrainingApp.Business.Services.Users;
+using TrainingApp.Business.Repositories;
+using TrainingApp.Business.Services.Base;
 using TrainingApp.Data.Contexts;
 
 namespace TrainingApp.Host
@@ -36,8 +37,13 @@ namespace TrainingApp.Host
             });
 
             //--------------------Services---------------------//
-            services.AddScoped<IUsersService, UsersService>();
+            services.AddScoped(typeof(ModelRepository<>));
+            services.AddScoped(typeof(DTORepository<>));
 
+            services.AddScoped(typeof(IModelService<>), typeof(ModelService<>));
+            services.AddScoped(typeof(IDTOService<>), typeof(DTOService<>));
+            services.AddScoped(typeof(IBaseService<,>), typeof(BaseService<,>));
+            services.AddScoped(typeof(IBaseService<,,>), typeof(BaseService<,,>));
             //--------------------Context---------------------//
 
             // получаем строку подключения из файла конфигурации

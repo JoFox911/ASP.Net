@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using TrainingApp.Data.Base.Models;
 
 namespace TrainingApp.Data.Models.Account
 {
-    public class Role
+    public class Role : BaseModel
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public List<User> Users { get; set; }
         public Role()

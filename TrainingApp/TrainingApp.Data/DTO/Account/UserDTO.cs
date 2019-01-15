@@ -1,13 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using TrainingApp.Data.DTO.Base;
 
-namespace TrainingApp.Data.DTO
+namespace TrainingApp.Data.DTO.Account
 {
-    class UserListDTO
+    public class UserListDTO: BaseDTO
     {
-        public Guid Id { get; set; }
-
         [DisplayName("Повне ім'я")]
         public string FullName { get; set; }
 
@@ -18,10 +17,8 @@ namespace TrainingApp.Data.DTO
         public string Role { get; set; }
     }
 
-    class UserDetailDTO
+    public class UserDetailDTO: BaseDTO
     {
-        public Guid Id { get; set; }
-
         [DisplayName("Прізвище")]
         [Required(ErrorMessage = "Прізвище є обов'язковим полем")]
         public string LastName { get; set; }
@@ -42,9 +39,21 @@ namespace TrainingApp.Data.DTO
         [Required(ErrorMessage = "Пароль є обов'язковим полем")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Роль є обов'язковим полем")]
-        public Guid? RoleId { get; set; }
-        [DisplayName("Роль")]
-        public string Role { get; set; }
+        ////[Required(ErrorMessage = "Роль є обов'язковим полем")]
+        //public Guid? RoleId { get; set; }
+        //[DisplayName("Роль")]
+        //public string Role { get; set; }
+    }
+
+    public class UserAuthDTO : BaseDTO
+    {
+        [DisplayName("Email")]
+        [Required(ErrorMessage = "Не указан Email")]
+        public string Email { get; set; }
+
+        [DisplayName("Пароль")]
+        [Required(ErrorMessage = "Не указан пароль")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
     }
 }

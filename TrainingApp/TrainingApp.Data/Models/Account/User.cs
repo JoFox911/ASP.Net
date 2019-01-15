@@ -1,10 +1,10 @@
 ﻿using System;
+using TrainingApp.Data.Base.Models;
 
 namespace TrainingApp.Data.Models.Account
 {
-    public class User
+    public class User: BaseModel
     {
-        public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string SurnameName { get; set; }
         public string LastName { get; set; }

@@ -1,0 +1,13 @@
+﻿@model IQueryable<TrainingApp.Data.DTO.Account.UserDetailDTO>
+
+<h2>Список пользователей</h2>
+<table class="table">
+    <tr><td>Name</td><td>Age</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.LastName</td>
+            
+        </tr>
+    }
+</table>

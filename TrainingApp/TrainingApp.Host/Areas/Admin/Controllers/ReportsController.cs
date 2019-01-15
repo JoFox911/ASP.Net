@@ -1,13 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace TrainingApp.Host.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    //[Authorize]
-    //[Authorize(Roles = "admin")]
-    
     public class ReportsController : DefaultController
     {
         
