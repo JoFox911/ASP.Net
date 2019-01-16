@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DTO\Account\UserListDTO.sql" />
     <None Remove="DTO\UserDetailDTo.sql" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="DTO\Account\UserDetailDTO.sql" />
+    <EmbeddedResource Include="DTO\Account\UserListDTO.sql" />
   </ItemGroup>
 
   <ItemGroup>

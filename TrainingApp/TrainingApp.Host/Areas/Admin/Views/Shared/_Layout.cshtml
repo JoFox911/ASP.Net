@@ -30,15 +30,19 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="Admin" asp-controller="Reports" asp-action="Info">Reports</a></li>
+                    @if (this.User.IsInRole("admin") || this.User.IsInRole("superadmin"))
+                    {
+                        <li><a asp-area="Admin" asp-controller="Users" asp-action="Journal">Journal</a></li>
+                    }
+                    <li><a asp-area="" asp-controller="" asp-action="">Something</a></li>
+                    <li><a asp-area="Admin" asp-controller="Account" asp-action="Logout">Logout</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <partial name="_CookieConsentPartial" />
+    @*<partial name="_CookieConsentPartial" />*@
 
     <div class="container body-content">
         @RenderBody()

@@ -32,9 +32,7 @@ namespace TrainingApp.Business.Repositories
                     var dtoType = typeof(TDTO);
                     var assembly = Assembly.GetAssembly(dtoType);
                     var resourceName = dtoType.Namespace + "." + dtoType.Name + ".sql";
-
-                    var t = assembly.GetManifestResourceNames();
-
+                    
                     resourceName = assembly.GetManifestResourceNames()
                         .FirstOrDefault(r => r.ToLowerInvariant() == resourceName.ToLowerInvariant());
 
