@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading.Tasks;
 using TrainingApp.Business.Services.Base;
 using TrainingApp.Data.DTO.Account;
+using TrainingApp.Data.Models.Account;
 
 namespace TrainingApp.Host.Areas.Admin.Controllers
 {
-    using IUserServ = IDTOService<UserDetailDTO>;
+    using IUserServ = IBaseService<UserAuthDTO, UserDetailDTO, User>;
 
     [Area("Admin")]
     public class TestWithDbController : Controller
@@ -21,6 +23,7 @@ namespace TrainingApp.Host.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            var user = await userServ.GetDTO().FirstOrDefaultAsync(u => u.Email == "admin@gmail.com" && u.Password == "1");
             var users = await userServ.GetDTO().ToListAsync();
             return View(users);
         }

@@ -23,69 +23,71 @@ namespace TrainingApp.Business.Repositories
         //    _listModelCounted = typeof(IPagingCounted).IsAssignableFrom(typeof(TDTO));
         //}
 
-        private string QueryString = "SELECT * FROM users";
-        //{
-        //    get
-        //    {
-        //        if (QueryTextString == null)
-        //        {
-        //            var dtoType = typeof(TDTO);
-        //            var assembly = Assembly.GetAssembly(dtoType);
-        //            var resourceName = dtoType.Namespace + "." + dtoType.Name + ".sql";
+        private string QueryString
+        {
+            get
+            {
+                if (QueryTextString == null)
+                {
+                    var dtoType = typeof(TDTO);
+                    var assembly = Assembly.GetAssembly(dtoType);
+                    var resourceName = dtoType.Namespace + "." + dtoType.Name + ".sql";
 
-        //            resourceName = assembly.GetManifestResourceNames()
-        //                .FirstOrDefault(r => r.ToLowerInvariant() == resourceName.ToLowerInvariant());
+                    var t = assembly.GetManifestResourceNames();
 
-        //            if (resourceName == null)
-        //            {
-        //                throw new Exception($"Resource {dtoType.Name} not found!");
-        //            }
+                    resourceName = assembly.GetManifestResourceNames()
+                        .FirstOrDefault(r => r.ToLowerInvariant() == resourceName.ToLowerInvariant());
 
-        //            string tempQueryString = null;
+                    if (resourceName == null)
+                    {
+                        throw new Exception($"Resource {dtoType.Name} not found!");
+                    }
 
-        //            using (var stream = assembly.GetManifestResourceStream(resourceName))
-        //            {
-        //                using (var reader = new StreamReader(stream))
-        //                {
-        //                    tempQueryString = reader.ReadToEnd();
-        //                }
-        //            }
+                    string tempQueryString = null;
 
-        //            //var query_option_raw_execute = tempQueryString.Contains("query_option_raw_execute");
-        //            //var alias = "";
+                    using (var stream = assembly.GetManifestResourceStream(resourceName))
+                    {
+                        using (var reader = new StreamReader(stream))
+                        {
+                            tempQueryString = reader.ReadToEnd();
+                        }
+                    }
 
-        //            //if (!query_option_raw_execute)
-        //            //{
-        //            //    alias = "qry_x";
-        //            //    tempQueryString = "select *" +
-        //            //                //(StaticListModelCounted ? ", count(*) over() as \"TotalRecordCount\"" : "") +
-        //            //                (_listModelCounted ? ", count(*) over() as total_record_count" : "") +
-        //            //                " from (" + tempQueryString + ") " + alias;
+                    //var query_option_raw_execute = tempQueryString.Contains("query_option_raw_execute");
+                    //var alias = "";
 
-        //            //    if (!tempQueryString.EndsWith("{predicate}"))
-        //            //    {
-        //            //        tempQueryString += " {predicate}";
-        //            //    }
-        //            //}
+                    //if (!query_option_raw_execute)
+                    //{
+                    //    alias = "qry_x";
+                    //    tempQueryString = "select *" +
+                    //                //(StaticListModelCounted ? ", count(*) over() as \"TotalRecordCount\"" : "") +
+                    //                (_listModelCounted ? ", count(*) over() as total_record_count" : "") +
+                    //                " from (" + tempQueryString + ") " + alias;
 
-        //            //var rightsQueryString = GetRightsQueryString(alias);
-        //            //if (!string.IsNullOrEmpty(rightsQueryString))
-        //            //{
-        //            //    if (tempQueryString.EndsWith("{predicate}"))
-        //            //    {
-        //            //        tempQueryString += " and " + rightsQueryString;
-        //            //    }
-        //            //    else
-        //            //    {
-        //            //        tempQueryString += " where " + rightsQueryString;
-        //            //    }
-        //            //}
-        //            QueryTextString = tempQueryString;
-        //        }
+                    //    if (!tempQueryString.EndsWith("{predicate}"))
+                    //    {
+                    //        tempQueryString += " {predicate}";
+                    //    }
+                    //}
 
-        //        return QueryTextString;
-        //    }
-        //}
+                    //var rightsQueryString = GetRightsQueryString(alias);
+                    //if (!string.IsNullOrEmpty(rightsQueryString))
+                    //{
+                    //    if (tempQueryString.EndsWith("{predicate}"))
+                    //    {
+                    //        tempQueryString += " and " + rightsQueryString;
+                    //    }
+                    //    else
+                    //    {
+                    //        tempQueryString += " where " + rightsQueryString;
+                    //    }
+                    //}
+                    QueryTextString = tempQueryString;
+                }
+
+                return QueryTextString;
+            }
+        }
 
         public DTORepository(TrainingAppDbContext context)
         {
@@ -94,16 +96,21 @@ namespace TrainingApp.Business.Repositories
 
         public IQueryable<TDTO> GetDTO(string conditions, params object[] paramArray)
         {
-            //var t = Context.UserDetailDTO.FromSql("SELECT * FROM users").ToList();
-            //var t2 = Context.Query<TDTO>();
-            return Context.Query<TDTO>().FromSql("SELECT * FROM users"/*QueryStringParameterized(conditions, paramArray)*/);
+            //var e = Context.Users;
+            //var e1 = Context.Users.FromSql("SELECT * FROM users");
+            //var e2 = Context.Users.FromSql("SELECT * FROM users").ToList();
+            //var l = Context.UserDetailDTO;
+            //var l1 = Context.UserDetailDTO.FromSql("SELECT Id, Email, Password FROM users");
+            //var l2 = Context.UserDetailDTO.FromSql("SELECT u.Id, u.Email, u.Password, u.LastName, u.FirstName, u.SurName, r.Name as Role, r.Id as RoleId FROM users as u left join roles r on r.Id=u.RoleId").ToList();
+            ////var t2 = Context.Query<TDTO>();
+            return Context.Query<TDTO>().FromSql(QueryString/*"SELECT * FROM users"/*QueryStringParameterized(conditions, paramArray)*/);
         }
 
-        public string QueryStringParameterized(string conditions, params object[] paramArray)
-        {
-            var queryString = QueryString.Replace("{predicate}", conditions);
-            return string.Format(queryString, paramArray);
-        }
+        //public string QueryStringParameterized(string conditions, params object[] paramArray)
+        //{
+        //    var queryString = QueryString.Replace("{predicate}", conditions);
+        //    return string.Format(queryString, paramArray);
+        //}
 
         /// <summary>
         /// 

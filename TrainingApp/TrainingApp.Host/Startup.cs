@@ -36,6 +36,13 @@ namespace TrainingApp.Host
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //--------------------Context---------------------//
+            // получаем строку подключения из файла конфигурации
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            // добавляем контекст TrainingAppDbContext в качестве сервиса в приложение
+            services.AddDbContext<TrainingAppDbContext>(options =>
+                options.UseSqlServer(connection));
+
             //--------------------Services---------------------//
             services.AddScoped(typeof(ModelRepository<>));
             services.AddScoped(typeof(DTORepository<>));
@@ -44,13 +51,7 @@ namespace TrainingApp.Host
             services.AddScoped(typeof(IDTOService<>), typeof(DTOService<>));
             services.AddScoped(typeof(IBaseService<,>), typeof(BaseService<,>));
             services.AddScoped(typeof(IBaseService<,,>), typeof(BaseService<,,>));
-            //--------------------Context---------------------//
-
-            // получаем строку подключения из файла конфигурации
-            string connection = Configuration.GetConnectionString("DefaultConnection");
-            // добавляем контекст TrainingAppDbContext в качестве сервиса в приложение
-            services.AddDbContext<TrainingAppDbContext>(options =>
-                options.UseSqlServer(connection));
+           
 
             //-----------------Authentication---------------------//
             // установка конфигурации подключения

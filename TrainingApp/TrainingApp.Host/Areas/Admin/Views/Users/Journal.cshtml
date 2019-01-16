@@ -1,1 +1,30 @@
-﻿
+﻿@model List<TrainingApp.Data.DTO.Account.UserListDTO>
+
+<h2>Список пользователей</h2>
+<table class="table">
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model[0].FullName)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model[0].Email)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model[0].Role)
+        </td>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role)
+        </td>
+    </tr>
+    }
+</table>

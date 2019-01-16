@@ -9,6 +9,7 @@ namespace TrainingApp.Data.Contexts
     {
         public DbSet<User> Users { get; set; }
         public DbQuery<UserDetailDTO> UserDetailDTO { get; set; }
+        public DbQuery<UserListDTO> UserListDTO { get; set; }
         public DbSet<Role> Roles { get; set; }
 
         public TrainingAppDbContext(DbContextOptions<TrainingAppDbContext> options)

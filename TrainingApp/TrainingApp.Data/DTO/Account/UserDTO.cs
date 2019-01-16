@@ -25,7 +25,7 @@ namespace TrainingApp.Data.DTO.Account
 
         [DisplayName("По батькові")]
         [Required(ErrorMessage = "По батькові є обов'язковим полем")]
-        public string SurnameName { get; set; }
+        public string SurName { get; set; }
 
         [DisplayName("Ім'я")]
         [Required(ErrorMessage = "Ім'я є обов'язковим полем")]
@@ -39,10 +39,10 @@ namespace TrainingApp.Data.DTO.Account
         [Required(ErrorMessage = "Пароль є обов'язковим полем")]
         public string Password { get; set; }
 
-        ////[Required(ErrorMessage = "Роль є обов'язковим полем")]
-        //public Guid? RoleId { get; set; }
-        //[DisplayName("Роль")]
-        //public string Role { get; set; }
+        [Required(ErrorMessage = "Роль є обов'язковим полем")]
+        public Guid RoleId { get; set; }
+        [DisplayName("Роль")]
+        public string Role { get; set; }
     }
 
     public class UserAuthDTO : BaseDTO

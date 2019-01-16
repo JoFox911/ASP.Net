@@ -10,10 +10,11 @@ using TrainingApp.Data.Models.Account;
 using TrainingApp.Data.DTO.Account;
 using TrainingApp.Business.Services.Base;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TrainingApp.Host.Areas.Admin.Controllers
 {
-    using IUserServ = IModelService<User>;
+    using IUserServ = IBaseService<UserDetailDTO, User>;
     using IRoleServ = IModelService<Role>;
 
     [Area("Admin")]
@@ -39,13 +40,6 @@ namespace TrainingApp.Host.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult Test()
-        {
-            var result = ct.Query<UserDetailDTO>();
-            var results = ct.UserDetailDTO.FromSql("SELECT * FROM users").ToList();
-            var results2 = ct.Query<UserDetailDTO>().FromSql("SELECT * FROM users").ToList();
-            return View();
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -53,8 +47,7 @@ namespace TrainingApp.Host.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = await userServ.GetModel()
-                    .Include(u => u.Role)
+                var user = await userServ.GetDTO()
                     .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
                 if (user != null)
                 {
@@ -74,6 +67,7 @@ namespace TrainingApp.Host.Areas.Admin.Controllers
         }
 
         //Пароль должен генерироваться сам и отправляться на указанную почту
+        [Authorize(Roles = "admin,superadmin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(UserDetailDTO model)
@@ -82,16 +76,15 @@ namespace TrainingApp.Host.Areas.Admin.Controllers
             {
                 User user = await userServ.GetModel().FirstOrDefaultAsync(u => u.Email == model.Email);
                 if (user == null)
-                {
-                    // добавляем пользователя в бд
-                    user = new User { Email = model.Email, Password = model.Password };
+                {                  
                     Role userRole = await roleServ.GetModel().FirstOrDefaultAsync(r => r.Name == "user");
-                    if (userRole != null)
-                        user.Role = userRole;
+                    if (userRole != null) {
+                        //model.Role = userRole.Name;
+                        //model.RoleId = userRole.Id;
+                        await userServ.SaveAsync(model);
+                    }
 
-                    await userServ.SaveAsync(user);
-
-                    await Authenticate(user); // аутентификация
+                    await Authenticate(model); // аутентификация
 
                     return RedirectToAction("Info", "Reports");
                 }
@@ -101,13 +94,13 @@ namespace TrainingApp.Host.Areas.Admin.Controllers
             return View(model);
         }
 
-        private async Task Authenticate(User user)
+        private async Task Authenticate(UserDetailDTO user)
         {
             // создаем один claim
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name)
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role)
             };
             // создаем объект ClaimsIdentity
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType,
