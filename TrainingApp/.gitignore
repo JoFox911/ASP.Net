@@ -63,3 +63,5 @@ artifacts/
 
 *.dbmdl
 src/Astum.Core.DB/Astum.Core.DB.jfm
+
+*.ide-wal
