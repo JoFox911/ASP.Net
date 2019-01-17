@@ -89,16 +89,6 @@ namespace TrainingApp.Host.Areas.Admin.Controllers
         {
             UserDetailDTO model = null;
 
-            var roles = await roleServ.GetModel().ToListAsync();
-            var listItems = new List<SelectListItem>();
-            foreach (var role in roles)
-            {
-                listItems.Add(new SelectListItem { Selected = false, Text = role.Name, Value = role.Id.ToString() });
-            }
-            var rolesSelectList = new SelectList(listItems, "Value", "Text");
-
-            ViewBag.Roles = rolesSelectList;
-
             if (id == null)
                 model = Activator.CreateInstance<UserDetailDTO>();
             else

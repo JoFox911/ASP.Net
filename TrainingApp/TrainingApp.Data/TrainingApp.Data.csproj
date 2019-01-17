@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="DTO\Account\RoleListDTO.sql" />
     <None Remove="DTO\Account\UserListDTO.sql" />
     <None Remove="DTO\UserDetailDTo.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="DTO\Account\RoleListDTO.sql" />
     <EmbeddedResource Include="DTO\Account\UserDetailDTO.sql" />
     <EmbeddedResource Include="DTO\Account\UserListDTO.sql" />
   </ItemGroup>
@@ -17,6 +19,7 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.0.0" />
     <PackageReference Include="LinqKit.Microsoft.EntityFrameworkCore" Version="1.1.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="2.2.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.1" />

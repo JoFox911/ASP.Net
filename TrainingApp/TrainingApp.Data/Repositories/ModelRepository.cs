@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using TrainingApp.Data.Contexts;
 using TrainingApp.Data.Base.Models;
 
-namespace TrainingApp.Business.Repositories
+namespace TrainingApp.Data.Repositories
 {
     public class ModelRepository<TModel> where TModel : BaseModel//CoreEntity
     {

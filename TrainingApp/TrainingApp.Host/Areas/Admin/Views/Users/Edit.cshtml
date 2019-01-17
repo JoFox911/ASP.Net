@@ -1,4 +1,5 @@
 ﻿@model TrainingApp.Data.DTO.Account.UserDetailDTO
+@inject TrainingApp.Data.Helpers.SelectListHelper Sel
 
 <form asp-action="Edit" class="content-edit-wrapper">
     <input type="hidden"
@@ -32,9 +33,8 @@
         <label asp-for="Role"></label>
         <select asp-for="RoleId"
                 class="select"
-                asp-items=ViewBag.Roles
-                autocomplete="off">
-        </select>
+                asp-items='@Sel.List<TrainingApp.Data.DTO.Account.RoleListDTO>()'
+                autocomplete="off"></select>
     </div>
 
     <div>

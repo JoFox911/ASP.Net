@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TrainingApp.Business.Repositories;
+using TrainingApp.Data.Repositories;
 using TrainingApp.Data.Base.Models;
 
 namespace TrainingApp.Business.Services.Base

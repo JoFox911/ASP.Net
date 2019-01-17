@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TrainingApp.Business.Repositories;
+using TrainingApp.Data.Repositories;
 
 namespace TrainingApp.Business.Services.Base
 {

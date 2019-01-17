@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TrainingApp.Business.Repositories;
+using TrainingApp.Data.Repositories;
 using TrainingApp.Data.CustomAutoMapper;
 using TrainingApp.Data.DTO.Base;
 using TrainingApp.Data.Base.Models;

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 
-namespace TrainingApp.Business.Repositories
+namespace TrainingApp.Data.Repositories
 {
     public class DTORepository<TDTO> where TDTO : class
     {

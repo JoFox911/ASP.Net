@@ -11,9 +11,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TrainingApp.Business.Repositories;
+using TrainingApp.Data.Repositories;
 using TrainingApp.Business.Services.Base;
 using TrainingApp.Data.Contexts;
+using TrainingApp.Data.Helpers;
 
 namespace TrainingApp.Host
 {
@@ -51,8 +52,8 @@ namespace TrainingApp.Host
             services.AddScoped(typeof(IDTOService<>), typeof(DTOService<>));
             services.AddScoped(typeof(IBaseService<,>), typeof(BaseService<,>));
             services.AddScoped(typeof(IBaseService<,,>), typeof(BaseService<,,>));
-           
 
+            services.AddScoped<SelectListHelper>();
             //-----------------Authentication---------------------//
             // установка конфигурации подключения
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
