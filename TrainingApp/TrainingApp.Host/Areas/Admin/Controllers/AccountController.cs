@@ -14,24 +14,18 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace TrainingApp.Host.Areas.Admin.Controllers
 {
-    using IUserServ = IBaseService<UserDetailDTO, User>;
+    using IUserServ = IModelService<User>;
     using IRoleServ = IModelService<Role>;
 
     [Area("Admin")]
     public class AccountController : Controller
     {
         private readonly IUserServ userServ;
-        private readonly IRoleServ roleServ;
-        private readonly TrainingAppDbContext ct;
 
         //private readonly TrainingAppDbContext _context;
-        public AccountController(IUserServ userServ,
-            IRoleServ roleServ,
-            TrainingAppDbContext ct)
+        public AccountController(IUserServ userServ)
         {
             this.userServ = userServ;
-            this.roleServ = roleServ;
-            this.ct = ct;
         }
 
         [HttpGet]
@@ -40,14 +34,14 @@ namespace TrainingApp.Host.Areas.Admin.Controllers
             return View();
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(UserAuthDTO model)
         {
             if (ModelState.IsValid)
             {
-                var user = await userServ.GetDTO()
+                var user = await userServ.GetModel()
+                    .Include(u => u.Role)
                     .FirstOrDefaultAsync(u => u.Email == model.Email && u.Password == model.Password);
                 if (user != null)
                 {
@@ -58,49 +52,15 @@ namespace TrainingApp.Host.Areas.Admin.Controllers
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }
             return View(model);
-        }
+        }        
 
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        //Пароль должен генерироваться сам и отправляться на указанную почту
-        [Authorize(Roles = "admin,superadmin")]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(UserDetailDTO model)
-        {
-            if (ModelState.IsValid)
-            {
-                User user = await userServ.GetModel().FirstOrDefaultAsync(u => u.Email == model.Email);
-                if (user == null)
-                {                  
-                    Role userRole = await roleServ.GetModel().FirstOrDefaultAsync(r => r.Name == "user");
-                    if (userRole != null) {
-                        //model.Role = userRole.Name;
-                        //model.RoleId = userRole.Id;
-                        await userServ.SaveAsync(model);
-                    }
-
-                    await Authenticate(model); // аутентификация
-
-                    return RedirectToAction("Info", "Reports");
-                }
-                else
-                    ModelState.AddModelError("", "Некорректные логин и(или) пароль");
-            }
-            return View(model);
-        }
-
-        private async Task Authenticate(UserDetailDTO user)
+        private async Task Authenticate(User user)
         {
             // создаем один claim
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
-                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role)
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role?.Name)
             };
             // создаем объект ClaimsIdentity
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType,

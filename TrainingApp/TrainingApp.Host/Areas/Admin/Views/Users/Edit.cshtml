@@ -1,0 +1,43 @@
+﻿@model TrainingApp.Data.DTO.Account.UserDetailDTO
+
+<form asp-action="Edit" class="content-edit-wrapper">
+    <input type="hidden"
+           asp-for="Id" />
+    <div asp-validation-summary="ModelOnly"></div>
+    <div>
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName"
+               class="input"
+               autocomplete="off" />
+    </div>
+    <div>
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName"
+               class="input"
+               autocomplete="off" />
+    </div>
+    <div>
+        <label asp-for="SurName"></label>
+        <input asp-for="SurName"
+               class="input"
+               autocomplete="off" />
+    </div>
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email"
+               class="input"
+               autocomplete="off" />
+    </div>
+    <div>
+        <label asp-for="Role"></label>
+        <select asp-for="RoleId"
+                class="select"
+                asp-items=ViewBag.Roles
+                autocomplete="off">
+        </select>
+    </div>
+
+    <div>
+        <input type="submit" value="Зберегти" class="btn btn-secondary-inverse" />
+    </div>
+</form>

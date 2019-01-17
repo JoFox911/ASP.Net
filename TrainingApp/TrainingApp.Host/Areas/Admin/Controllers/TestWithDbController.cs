@@ -23,7 +23,6 @@ namespace TrainingApp.Host.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var user = await userServ.GetDTO().FirstOrDefaultAsync(u => u.Email == "admin@gmail.com" && u.Password == "1");
             var users = await userServ.GetDTO().ToListAsync();
             return View(users);
         }

@@ -1,6 +1,9 @@
 ﻿@model List<TrainingApp.Data.DTO.Account.UserListDTO>
 
 <h2>Список пользователей</h2>
+<a asp-action="Edit" class="btn btn-info navbar-btn"
+   data-title="Додати новий проект">
+</a>
 <table class="table">
     <tr>
         <td>
@@ -12,12 +15,13 @@
         <td>
             @Html.DisplayNameFor(model => model[0].Role)
         </td>
-        <td>
-        </td>
+        <td></td>
+        <td></td>
+        <td></td>
     </tr>
     @foreach (var item in Model)
     {
-    <tr>        
+    <tr>
         <td>
             @Html.DisplayFor(modelItem => item.FullName)
         </td>
@@ -29,6 +33,16 @@
         </td>
         <td>
             <a asp-action="Profile" class="btn btn-info navbar-btn"
+               asp-route-id="@item.Id">
+            </a>
+        </td>
+        <td>
+            <a asp-action="Edit" class="btn btn-info navbar-btn"
+               asp-route-id="@item.Id">
+            </a>
+        </td>
+        <td>
+            <a asp-action="Dalete" class="btn btn-info navbar-btn"
                asp-route-id="@item.Id">
             </a>
         </td>

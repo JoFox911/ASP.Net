@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using TrainingApp.Data.DTO.Base;
 
 namespace TrainingApp.Data.DTO.Account
@@ -35,8 +36,7 @@ namespace TrainingApp.Data.DTO.Account
         [Required(ErrorMessage = "Email є обов'язковим полем")]
         public string Email { get; set; }
 
-        [DisplayName("Пароль")]
-        [Required(ErrorMessage = "Пароль є обов'язковим полем")]
+        [NotMapped]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Роль є обов'язковим полем")]
