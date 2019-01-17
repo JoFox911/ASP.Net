@@ -51,41 +51,8 @@ namespace TrainingApp.Host.Areas.Admin.Controllers
 
             return View(model);
         }
-
-        //[HttpGet]
-        //public IActionResult Register()
-        //{
-        //    return View();
-        //}
-
-        ////Пароль должен генерироваться сам и отправляться на указанную почту
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Register(UserDetailDTO model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        User user = await userServ.GetModel().FirstOrDefaultAsync(u => u.Email == model.Email);
-        //        if (user == null)
-        //        {
-        //            Role userRole = await roleServ.GetModel().FirstOrDefaultAsync(r => r.Name == "user");
-        //            if (userRole != null)
-        //            {
-        //                //model.Role = userRole.Name;
-        //                //model.RoleId = userRole.Id;
-        //                await userServ.SaveAsync(model);
-        //            }
-
-        //            await Authenticate(model); // аутентификация
-
-        //            return RedirectToAction("Info", "Reports");
-        //        }
-        //        else
-        //            ModelState.AddModelError("", "Некорректные логин и(или) пароль");
-        //    }
-        //    return View(model);
-        //}
-
-        public virtual async Task<IActionResult> Edit(Guid? id)
+        
+        public async Task<IActionResult> Edit(Guid? id)
         {
             UserDetailDTO model = null;
 
@@ -145,7 +112,7 @@ namespace TrainingApp.Host.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public virtual async Task<JsonResult> Delete(Guid id)
+        public async Task<JsonResult> Delete(Guid id)
         {
             try
             {

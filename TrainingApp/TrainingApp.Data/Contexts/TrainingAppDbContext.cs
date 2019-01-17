@@ -30,9 +30,9 @@ namespace TrainingApp.Data.Contexts
             Role adminRole = new Role { Id = Guid.NewGuid(), Name = adminRoleName };
             Role userRole = new Role { Id = Guid.NewGuid(), Name = userRoleName };
 
-            User superadminUser = new User { Id = Guid.NewGuid(), Email = "superadmin@gmail.com", Password = "1", RoleId = superadminRole.Id };
-            User adminUser = new User { Id = Guid.NewGuid(), Email = "admin@gmail.com", Password = "1", RoleId = adminRole.Id };
-            User userUser = new User { Id = Guid.NewGuid(), Email = "user@gmail.com", Password = "1", RoleId = userRole.Id };
+            User superadminUser = new User { Id = Guid.NewGuid(), Email = "superadmin@gmail.com", Password = "1", RoleId = superadminRole.Id, FirstName = "a", LastName = "a", SurName = "a" };
+            User adminUser = new User { Id = Guid.NewGuid(), Email = "admin@gmail.com", Password = "1", RoleId = adminRole.Id, FirstName = "a", LastName = "a", SurName = "a" };
+            User userUser = new User { Id = Guid.NewGuid(), Email = "user@gmail.com", Password = "1", RoleId = userRole.Id, FirstName = "a", LastName = "a", SurName = "a" };
 
             modelBuilder.Entity<Role>().HasData(new Role[] { superadminRole, adminRole, userRole });
             modelBuilder.Entity<User>().HasData(new User[] { superadminUser, adminUser, userUser });
