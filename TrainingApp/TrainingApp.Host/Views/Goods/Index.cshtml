@@ -1,0 +1,51 @@
+﻿@model List<TrainingApp.Data.DTO.Goods.GoodsListDTO>
+
+<h2>Список товаров</h2>
+@*<a asp-action="Edit" class="btn btn-info navbar-btn"
+   data-title="Додати новий проект">
+</a>*@
+<table class="table">
+    <tr>
+        <td>
+            @Html.DisplayNameFor(model => model[0].Name)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model[0].Price)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model[0].Count)
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Count)
+            </td>
+            @*<td>
+                <a asp-action="Profile" class="btn btn-info navbar-btn"
+                   asp-route-id="@item.Id">
+                </a>
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-info navbar-btn"
+                   asp-route-id="@item.Id">
+                </a>
+            </td>
+            <td>
+                <a asp-action="Delete" class="btn btn-info navbar-btn"
+                   asp-route-id="@item.Id">
+                </a>
+            </td>*@
+        </tr>
+    }
+</table>

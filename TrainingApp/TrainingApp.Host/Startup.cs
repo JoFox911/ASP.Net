@@ -15,6 +15,8 @@ using TrainingApp.Data.Repositories;
 using TrainingApp.Business.Services.Base;
 using TrainingApp.Data.Contexts;
 using TrainingApp.Data.Helpers;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace TrainingApp.Host
 {
@@ -36,6 +38,12 @@ namespace TrainingApp.Host
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+
+            //--------------------FileProvider---------------------//
+            services.AddSingleton<IFileProvider>(
+                new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
             //--------------------Context---------------------//
             // получаем строку подключения из файла конфигурации
