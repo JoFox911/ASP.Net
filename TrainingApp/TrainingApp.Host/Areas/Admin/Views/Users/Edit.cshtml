@@ -33,7 +33,7 @@
         <label asp-for="Role"></label>
         <select asp-for="RoleId"
                 class="select"
-                asp-items='@Sel.List<TrainingApp.Data.DTO.Account.RoleListDTO>()'
+                asp-items='@Sel.List<TrainingApp.Data.DTO.Account.RoleListDTO>(null, x => x.Name != "superadmin")'
                 autocomplete="off"></select>
     </div>
 

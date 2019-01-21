@@ -15,7 +15,7 @@ using TrainingApp.Data.Repositories;
 using TrainingApp.Business.Services.Base;
 using TrainingApp.Data.Contexts;
 using TrainingApp.Data.Helpers;
-using Microsoft.Extensions.FileProviders;
+using ReflectionIT.Mvc.Paging;
 using System.IO;
 
 namespace TrainingApp.Host
@@ -73,6 +73,8 @@ namespace TrainingApp.Host
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddPaging();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
